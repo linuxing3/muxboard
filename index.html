@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muxboard — route the plan, cheapen the rest</title>
+  <meta name="description" content="Muxboard is a desktop control layer that switches coding-agent harnesses, moves task memory between models, and routes planning to Claude while cheaper models do routine work." />
+  <link rel="canonical" href="https://muxboard.efwmcapp.com/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="#top">Muxboard</a>
+    <nav>
+      <a href="#console">Console</a>
+      <a href="#route">Routing</a>
+      <a href="#ledger">Ledger</a>
+    </nav>
+    <span class="pill">Concept · muxboard.efwmcapp.com</span>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="kicker">Control layer for people who already run several agents</p>
+      <h1>Switch the harness. Keep the memory. Spend Claude only on the plan.</h1>
+      <p class="lede">Muxboard sits above Codex, Claude Code, and the cheap daily driver. It moves task context between models, routes planning and tool-call review to Claude, and writes a weekly cost and quality report from the traces.</p>
+      <div class="actions">
+        <a class="btn" href="#console">Open the sample console</a>
+        <a class="btn ghost" href="#route">See a routed task</a>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><b>3</b><span>harnesses on one task</span></div>
+      <div><b>1</b><span>memory store, not three chats</span></div>
+      <div><b>$</b><span>planner priced apart from edits</span></div>
+    </section>
+
+    <section id="console" class="panel">
+      <div class="panel-head">
+        <h2>Sample console</h2>
+        <p>Not a live router. The buttons replay a fixed trace so the application page can show the job Claude does.</p>
+      </div>
+      <div class="board">
+        <aside>
+          <p class="label">Harness</p>
+          <button class="harness on" data-harness="claude">Claude Code · planner</button>
+          <button class="harness" data-harness="codex">Codex · review</button>
+          <button class="harness" data-harness="cheap">Haiku-class · edits</button>
+          <p class="label">Task memory</p>
+          <ul class="memory">
+            <li>repo: muxboard</li>
+            <li>goal: split plan from edits</li>
+            <li>budget: $4 / task</li>
+            <li>fail: escalate, do not retry blindly</li>
+          </ul>
+        </aside>
+        <div class="trace" id="trace"></div>
+      </div>
+    </section>
+
+    <section id="route" class="split">
+      <div>
+        <h2>What Claude actually does</h2>
+        <ol>
+          <li>Decompose the task into plan, edits, and checks.</li>
+          <li>Review tool calls before a cheaper model applies them.</li>
+          <li>Write the weekly cost and quality note from traces.</li>
+        </ol>
+        <p>Routine diffs stay off Claude. That is the point of the $1,000 credit: cover the planner and eval loop, about 20–50 internal runs a day, not resell inference.</p>
+      </div>
+      <table>
+        <thead><tr><th>Step</th><th>Model</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Plan</td><td>Claude</td><td>Long context, tool judgment</td></tr>
+          <tr><td>Edit</td><td>Cheaper model</td><td>High token volume</td></tr>
+          <tr><td>Review</td><td>Claude</td><td>Catch bad tool calls</td></tr>
+          <tr><td>Ledger</td><td>Claude</td><td>Weekly cost / quality</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="ledger" class="panel">
+      <div class="panel-head">
+        <h2>After-the-fact ledger</h2>
+        <p>Measured on task success, human escalation, and dollars per merged change. Sample numbers, not production.</p>
+      </div>
+      <div class="bars" id="bars"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Muxboard concept site · not a shipped product</span>
+    <a href="https://github.com/linuxing3/muxboard">Source</a>
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>
